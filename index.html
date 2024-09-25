@@ -23,8 +23,8 @@
       <div class="main">
         <h2>Dein Lieblingsessen, wann und wo du willst!</h2>
         <div class="eingabe">
-          <input type="text" name="adresse" placeholder="Adresse/PLZ" />
-          <a id="fetch-restaurants" href="shopping.html">Restaurants abrufen</a>
+          <input type="text" id="address" placeholder="Adresse/PLZ" />
+          <button id="fetch-restaurants">Restaurants abrufen</button>
         </div>
         <div class="icons">
           <img src="images/anlaufen.png" alt="Rakete" width="125" />
@@ -48,5 +48,36 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      document.getElementById('fetch-restaurants').addEventListener('click', async () => {
+          const address = document.getElementById('address').value;
+
+          // Geocode the address to get coordinates
+          const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
+          
+          try {
+              const geocodeResponse = await fetch(geocodeUrl);
+              const geocodeData = await geocodeResponse.json();
+
+              // Überprüfen, ob die Geokodierung erfolgreich war
+              if (geocodeData.status !== 'OK') {
+                  alert('Ungültige Adresse oder Standort');
+                  return;
+              }
+
+              // Koordinaten extrahieren
+              const location = geocodeData.results[0].geometry.location;
+              const locationString = `${location.lat},${location.lng}`;
+
+              // Leite den Benutzer zur shopping.html mit der Adresse weiter
+              const url = `shopping.html?address=${encodeURIComponent(address)}`;
+              window.location.href = url;
+
+          } catch (error) {
+              console.error('Fehler beim Abrufen der Geodaten:', error);
+          }
+      });
+    </script>
   </body>
 </html>

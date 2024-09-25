@@ -20,36 +20,55 @@
 </head>
 <body>
     <h1>Restaurants in der Nähe suchen</h1>
-    <label for="address">Adresse oder PLZ eingeben:</label>
-    <input type="text" id="address" placeholder="z.B. Luzern oder 6000">
-    <button id="fetch-restaurants">Restaurants abrufen</button>
     <div id="restaurant-list"></div>
 
     <script>
-        document.getElementById('fetch-restaurants').addEventListener('click', async () => {
-            const address = document.getElementById('address').value;
+        async function getRestaurants(address) {
+            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
 
-            try {
-                const response = await fetch(`http://localhost:3000/api/restaurants?address=${encodeURIComponent(address)}`);
-                const data = await response.json();
+            const response = await fetch(geocodeUrl);
+            const geocodeData = await response.json();
 
-                const restaurantList = document.getElementById('restaurant-list');
-                restaurantList.innerHTML = ''; // Leeren der Liste
-
-                if (data && data.length > 0) {
-                    data.forEach(restaurant => {
-                        const div = document.createElement('div');
-                        div.className = 'restaurant';
-                        div.innerHTML = `<strong>${restaurant.name}</strong>`;
-                        restaurantList.appendChild(div);
-                    });
-                } else {
-                    restaurantList.innerHTML = '<p>Keine Restaurants gefunden.</p>';
-                }
-            } catch (error) {
-                console.error('Fehler beim Abrufen der Restaurants:', error);
+            if (geocodeData.status !== 'OK') {
+                document.getElementById('restaurant-list').innerHTML = 'Keine gültige Adresse gefunden.';
+                return;
             }
-        });
+
+            const location = geocodeData.results[0].geometry.location;
+            const locationString = `${location.lat},${location.lng}`;
+
+            // API-Anruf für Restaurants
+            const restaurantUrl = `http://localhost:3000/api/restaurants?address=${encodeURIComponent(locationString)}`;
+            const restaurantResponse = await fetch(restaurantUrl);
+            const restaurants = await restaurantResponse.json();
+
+            const restaurantList = document.getElementById('restaurant-list');
+            restaurantList.innerHTML = '';
+
+            if (restaurants.length > 0) {
+                restaurants.forEach(restaurant => {
+                    const div = document.createElement('div');
+                    div.className = 'restaurant';
+                    div.innerHTML = `<strong>${restaurant.name}</strong>`;
+                    restaurantList.appendChild(div);
+                });
+            } else {
+                restaurantList.innerHTML = '<p>Keine Restaurants gefunden.</p>';
+            }
+        }
+
+        function getAddressFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('address');
+        }
+
+        // Aufruf der Funktion, wenn die Seite geladen wird
+        const address = getAddressFromUrl();
+        if (address) {
+            getRestaurants(address);
+        } else {
+            document.getElementById('restaurant-list').innerHTML = 'Keine Adresse angegeben.';
+        }
     </script>
 </body>
 </html>

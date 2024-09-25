@@ -13,7 +13,6 @@ app.use(express.json());
 app.get('/api/restaurants', async (req, res) => {
     const address = req.query.address; // Adresse von der Anfrage erhalten
 
-    // Schritt 1: Geokodierung
     const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
     try {

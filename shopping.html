@@ -3,72 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/shopping.css">
     <title>Restaurants suchen</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        #restaurant-list {
-            margin-top: 20px;
-        }
-        .restaurant {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Restaurants in der Nähe suchen</h1>
-    <div id="restaurant-list"></div>
+    <div class="container">
+        <header>
+            <h1>Header</h1>
+            <a href="cart.html">WARENKORB HEIL HITLER</a>
+        </header>
 
-    <script>
-        async function getRestaurants(address) {
-            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
+        <h1 class="Slogan">Bestelle Essen und mehr</h1>
+        <h2 id="page-title">Restaurants in der Nähe von</h2>
 
-            const response = await fetch(geocodeUrl);
-            const geocodeData = await response.json();
+        <!-- Bearbeitbarer Adress-Input -->
+        <div class="address-input">
+            <label for="address">Suche ändern:</label>
+            <input type="text" id="address-input" placeholder="Adresse eingeben" />
+            <button id="update-address">Suche aktualisieren</button>
+        </div>
 
-            if (geocodeData.status !== 'OK') {
-                document.getElementById('restaurant-list').innerHTML = 'Keine gültige Adresse gefunden.';
-                return;
+        <div id="restaurant-list"></div>
+
+        <footer>
+            <div class="links">
+                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Über uns</a>
+                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Cart</a>
+                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Restaurante</a>
+              </div>
+              <div class="middle">
+                <p>Hier Könnte ein Text stehen</p>
+                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Kontakt</a>
+                <a href="https://www.youtube.com/?v=8ybW48rKBME">QuickBite.ch</a>
+              </div>
+              <div class="map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1949.5967268399372!2d8.346173874919447!3d47.071516324776425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ffc03f44a7433%3A0xa693809437ac2778!2sICT-Berufsbildung%20Zentralschweiz!5e1!3m2!1sde!2sch!4v1727256602366!5m2!1sde!2sch" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+        </footer>
+
+        <script>
+            // Funktion, um die Adresse aus der URL zu holen
+            function getAddressFromUrl() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('address');
             }
 
-            const location = geocodeData.results[0].geometry.location;
-            const locationString = `${location.lat},${location.lng}`;
+            // Funktion, um die Adresse in den Seitentitel einzufügen
+            function setTitleWithAddress(address) {
+                const titleElement = document.getElementById('page-title');
+                titleElement.textContent = `Restaurants in der Nähe von ${address}`;
+            }
 
-            // API-Anruf für Restaurants
-            const restaurantUrl = `http://localhost:3000/api/restaurants?address=${encodeURIComponent(locationString)}`;
-            const restaurantResponse = await fetch(restaurantUrl);
-            const restaurants = await restaurantResponse.json();
+            // Funktion, um Restaurants zu holen (wie vorher)
+            async function getRestaurants(address) {
+                const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
 
-            const restaurantList = document.getElementById('restaurant-list');
-            restaurantList.innerHTML = '';
+                const response = await fetch(geocodeUrl);
+                const geocodeData = await response.json();
 
-            if (restaurants.length > 0) {
-                restaurants.forEach(restaurant => {
-                    const div = document.createElement('div');
-                    div.className = 'restaurant';
-                    div.innerHTML = `<strong>${restaurant.name}</strong>`;
-                    restaurantList.appendChild(div);
-                });
+                if (geocodeData.status !== 'OK') {
+                    document.getElementById('restaurant-list').innerHTML = 'Keine gültige Adresse gefunden.';
+                    return;
+                }
+
+                const location = geocodeData.results[0].geometry.location;
+                const locationString = `${location.lat},${location.lng}`;
+
+                // API-Anruf für Restaurants
+                const restaurantUrl = `http://localhost:3000/api/restaurants?address=${encodeURIComponent(locationString)}`;
+                const restaurantResponse = await fetch(restaurantUrl);
+                const restaurants = await restaurantResponse.json();
+
+                const restaurantList = document.getElementById('restaurant-list');
+                restaurantList.innerHTML = '';
+
+                if (restaurants.length > 0) {
+                    restaurants.forEach(restaurant => {
+                        const div = document.createElement('div');
+                        div.className = 'restaurant';
+                        div.innerHTML = `
+                            <strong>${restaurant.name}</strong><br>
+                            Adresse: ${restaurant.address}<br>
+                            Bewertung: ${restaurant.rating || 'Keine Bewertung'}<br>
+                            ${restaurant.website ? `<a href="${restaurant.website}" target="_blank">Zur Webseite</a>` : 'Keine Webseite verfügbar'}
+                        `;
+                        restaurantList.appendChild(div);
+                    });
+                } else {
+                    restaurantList.innerHTML = '<p>Keine Restaurants gefunden.</p>';
+                }
+            }
+
+            // Funktion, um die Adresse im Input-Feld zu aktualisieren
+            function setAddressInputValue(address) {
+                const addressInput = document.getElementById('address-input');
+                addressInput.value = address;
+            }
+
+            // Hauptlogik
+            const address = getAddressFromUrl();
+            if (address) {
+                setTitleWithAddress(address);  // Titel aktualisieren
+                setAddressInputValue(address); // Input-Feld mit Adresse füllen
+                getRestaurants(address);       // Restaurants holen
             } else {
-                restaurantList.innerHTML = '<p>Keine Restaurants gefunden.</p>';
+                document.getElementById('restaurant-list').innerHTML = 'Keine Adresse angegeben.';
             }
-        }
 
-        function getAddressFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('address');
-        }
+            // Event-Listener für den Button "Suche aktualisieren"
+            document.getElementById('update-address').addEventListener('click', () => {
+                const newAddress = document.getElementById('address-input').value;
 
-        // Aufruf der Funktion, wenn die Seite geladen wird
-        const address = getAddressFromUrl();
-        if (address) {
-            getRestaurants(address);
-        } else {
-            document.getElementById('restaurant-list').innerHTML = 'Keine Adresse angegeben.';
-        }
-    </script>
+                if (newAddress) {
+                    // Leite die Seite mit der neuen Adresse neu weiter
+                    window.location.href = `shopping.html?address=${encodeURIComponent(newAddress)}`;
+                }
+            });
+        </script>
+    </div>
 </body>
 </html>

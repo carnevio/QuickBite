@@ -1,13 +1,24 @@
 .container {
     display: grid;
     
-    grid-template-rows:   80px auto 200px;
+    grid-template-rows:   80px auto 120px;
   
     max-height:  1200px;
 }
 
 .container div {
-  background-color: red;
+    border: 2px solid black;
+    padding: 5px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+header {
+    background-color: red;
+}
+
+footer {
+    background-color: green;
 }
 
 body {
@@ -15,9 +26,53 @@ body {
 }
 #restaurant-list {
     margin-top: 20px;
+    color: black;
 }
 .restaurant {
-    border: 1px solid #ccc;
+    border: 2px solid darkgray;
+    border-radius: 15px;
     padding: 10px;
     margin-bottom: 10px;
+    color: black;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.map {
+    width: 50%;
+}
+
+iframe {
+    width: 50%;
+    height: 100%;
+    border: none;
+}
+
+.restaurant a {
+    color: blue;
+    text-decoration: underline;
+}
+.restaurant a:hover {
+    color: darkblue;
+}
+
+@media screen and (max-width: 800px) {
+    .map{
+        display: none;
+    }
 }

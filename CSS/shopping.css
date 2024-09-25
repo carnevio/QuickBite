@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    
+    grid-template-rows:   80px auto 200px;
+  
+    max-height:  1200px;
+}
+
+.container div {
+  background-color: red;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+#restaurant-list {
+    margin-top: 20px;
+}
+.restaurant {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}

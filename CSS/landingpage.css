@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    
+    grid-template-rows:   120px auto 120px;
+  
+    max-height:  1200px;
+}
+
+.container div {
+  background-color: red;
+  border: 2px solid black;
+  color: #fff;
+  padding: 5px;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}

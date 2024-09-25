@@ -1,21 +1,82 @@
 .container {
     display: grid;
-    
-    grid-template-rows:   120px auto 120px;
-  
-    max-height:  1200px;
+
+    grid-template-rows: 120px auto 120px;
+
 }
 
 .container div {
-  background-color: red;
-  border: 2px solid black;
-  color: #fff;
-  padding: 5px;
-  font-family: Arial;
-  font-weight: bold;
+
+    border: 2px solid black;
+    color: #fff;
+    padding: 5px;
+    font-family: Arial;
+    font-weight: bold;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topright {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+h2 {
+    color: black;
+    text-align: center;
+}
+
+.eingabe {
+    display: flex;
+    justify-content: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+p {
+    color: black;
+}
+
+.map {
+    width: 50%;
+}
+
+iframe {
+    width: 50%;
+    height: 100%;
+    border: none; /* Rahmen des iFrames entfernen */
+  }

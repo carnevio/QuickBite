@@ -94,6 +94,22 @@ header {
     display: flex;
 }
 
+.header {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+    padding: 50px;
+    color: #c90606;
+    text-shadow: 1px 1px 1px #333;
+    /* Änderung des Farbverlaufs von oben nach unten */
+    background-image: linear-gradient(to bottom, #ff0000a6 10%, #c2777704 100%);
+}
+
 @media screen and (max-width: 800px) {
     .cart {
         display: none;

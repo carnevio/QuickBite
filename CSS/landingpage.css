@@ -1,21 +1,28 @@
+body {
+    font-family: Arial;
+}
+
 .container {
-    display: grid;
-
-    grid-template-rows: 120px auto 120px;
-
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container div {
-
-
     color: #fff;
     padding: 5px;
     font-family: Arial;
     font-weight: bold;
 }
 
+.main {
+    padding: 20px;
+    flex-grow: 1;
+}
+
 html,
 body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -28,6 +35,7 @@ h1 {
 header {
     display: flex;
     justify-content: space-between;
+    height: 120px
 }
 
 .topright {
@@ -44,12 +52,15 @@ h2 {
 .eingabe {
     display: flex;
     justify-content: center;
+    
 }
 
 .icons {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
+
 
 footer {
     display: flex;
@@ -84,7 +95,7 @@ iframe {
 
 header {
     height: 150px;
-    background: linear-gradient(to right, transparent 0%, transparent 200px, red 201px, red 100%);
+    background: linear-gradient(to right, transparent 0%, transparent 200px, red 201px, rgba(255, 0, 0, 0.336));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,7 +137,7 @@ header {
 
 .hidden-menu.show {
     right: 0;
-    width: 35vw; 
+    width: 25vw; 
     background: #fff;
 }
 
@@ -135,22 +146,13 @@ header {
       transform: translateX(0) rotate(0deg);
     }
     100% {
-      transform: translateX(30%);
-    }
-}
-
-@keyframes moveAndRotate2 {
-    0% {
-      transform: translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateX(40%);
+      transform: translateX(-18vw);
     }
 }
 
 @keyframes popout {
     0% { transform: translateX(0);}
-    100% { transform: translateX(-220);}
+    100% { transform: translateX(-20vw);}
   }
 
 .menuLinks {
@@ -178,10 +180,11 @@ header {
     color: black;
     margin-left: auto;
     margin-right: 30px;
+
 }
 
 .headerLinks.activated {
-    animation: moveAndRotate2 0.45s forwards;
+    animation: moveAndRotate 0.45s forwards;
 }
 
 .AboutUs {
@@ -203,7 +206,6 @@ header {
 
 header {
     text-align: center;
-    width: 100%;
     height: auto;
     background-size: cover;
     background-attachment: fixed;
@@ -213,17 +215,79 @@ header {
     padding: 50px;
     color: #c90606;
     text-shadow: 1px 1px 1px #333;
-    /* Änderung des Farbverlaufs von oben nach unten */
     background-image: linear-gradient(to bottom, #ff0000a6 10%, #c2777704 100%);
-    margin-top: -10px;
-    margin-left: -10px;
-    margin-right: -10px;
+    margin-top: -5px;
+    margin-left: -5px;
+    margin-right: -5px;
 }
+
+
+
 
 
 button:hover{
 	cursor: pointer;
 }
+
+footer {
+	padding: 50px;
+    background-image: linear-gradient( 135deg, #62d12188 10%, #087a046b 100%);
+    text-align: center;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 85% 85% 0 0/ 30%;
+    margin-bottom: -5px;
+    margin-left: -5px;
+    margin-right: -5px;
+     height: 120px;
+}
+
+.eingabe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.eingabe input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.eingabe input[type="text"]:focus {
+    border-color: #ff0000a6; 
+    outline: none;
+}
+
+.eingabe button {
+    padding: 10px 20px;
+    background-color: #ff0000a6; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.eingabe button:hover {
+    background-color: #c90606; 
+    transform: scale(1.05);
+}
+
+.eingabe button:active {
+    background-color: #a00505; 
+    transform: scale(1.02); 
+}
+
 
 @media screen and (max-width: 800px) {
     .cart {
@@ -247,4 +311,9 @@ button:hover{
         justify-content: space-between;
     }
 
+}
+
+@media screen and (max-width: 600px) {
+
+    
 }

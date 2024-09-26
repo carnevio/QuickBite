@@ -16,9 +16,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const favouriteList = document.getElementById('favourite-list');
-
-            
             const favourites = JSON.parse(localStorage.getItem('favourites')) || [];
+            
+            // Log: Favourites laden
+            console.log('Geladene Favoriten:', favourites);
 
             if (favourites.length > 0) {
                 favourites.forEach(restaurant => {
@@ -33,7 +34,7 @@
                 });
             } else {
                 favouriteList.innerHTML = '<p>Keine Favoriten gefunden.</p>';
-            }//Eventuell wichtiger Log
+            }
         });
     </script>
 </body>

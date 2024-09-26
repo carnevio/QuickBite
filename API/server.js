@@ -2,8 +2,14 @@ import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
 
+const express = require('express');
 const app = express();
-const PORT = 3000;
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server läuft auf http://localhost:${PORT}`);
+});
 
 const apiKey = 'AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0'; // Ersetze mit deinem Google API Key
 

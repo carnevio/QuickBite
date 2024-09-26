@@ -47,7 +47,7 @@
 
 .hidden-menu.show {
     right: 0;
-    width: 35vw; 
+    width: 25vw; 
 }
 
 @keyframes moveAndRotate {
@@ -55,22 +55,14 @@
       transform: translateX(0) rotate(0deg);
     }
     100% {
-      transform: translateX(30%);
+      transform: translateX(-18vw);
     }
 }
 
-@keyframes moveAndRotate2 {
-    0% {
-      transform: translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateX(40%);
-    }
-}
 
 @keyframes popout {
     0% { transform: translateX(0);}
-    100% { transform: translateX(-220);}
+    100% { transform: translateX(-20vw);}
   }
 
 .menuLinks {
@@ -111,7 +103,7 @@
 }
 
 .headerLinks.activated {
-    animation: moveAndRotate2 0.45s forwards;
+    animation: moveAndRotate 0.45s forwards;
 }
 
 header {
@@ -194,6 +186,12 @@ iframe {
 }
 
 
+@media screen and (max-width: 1000px) {
+    .menuTitle {
+        font-size: 17px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .map{
         display: none;
@@ -205,7 +203,7 @@ iframe {
         display: none;
     }
     .menuTitle {
-        font-size: 20px;
+        font-size: 17px;
     }
 }
 

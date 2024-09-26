@@ -36,7 +36,7 @@
     right: -245px; 
     width: 250px;
     height: 100vh;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     padding: 20px;
     transition: right 0.5s ease;
     overflow: hidden;
@@ -48,6 +48,7 @@
 .hidden-menu.show {
     right: 0;
     width: 25vw; 
+    background-color: white;
 }
 
 @keyframes moveAndRotate {
@@ -92,6 +93,7 @@
 .headerLogo {
     width: 90px;
     padding: 20px;
+    margin-bottom: 10px;
 }
 
 .headerLinks {
@@ -111,6 +113,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top:-10px;
+    margin-left:-10px;
+    margin-right:-10px;
 }
 
 footer {
@@ -151,10 +156,11 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 55vw;
 }
 
 .map {
-    width: 50%;
+    width: 200%;
 }
 
 iframe {
@@ -184,6 +190,16 @@ iframe {
     width: 24px;
     height: 24px;
 }
+
+.Slogan {
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
 
 
 @media screen and (max-width: 1000px) {

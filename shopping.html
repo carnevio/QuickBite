@@ -60,20 +60,8 @@
             }
         
             async function getRestaurants(address) {
-                const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
-        
-                const response = await fetch(geocodeUrl);
-                const geocodeData = await response.json();
-        
-                if (geocodeData.status !== 'OK') {
-                    document.getElementById('restaurant-list').innerHTML = 'Keine gültige Adresse gefunden.';
-                    return;
-                }
-        
-                const location = geocodeData.results[0].geometry.location;
-                const locationString = `${location.lat},${location.lng}`;
-        
-                const restaurantUrl = `http://localhost:3000/api/restaurants?address=${encodeURIComponent(locationString)}`;
+                const restaurantUrl = `https://quickbite-mtwy.onrender.com/api/restaurants?address=${encodeURIComponent(address)}`; // Sicherstellen, dass der Port hier stimmt
+
                 const restaurantResponse = await fetch(restaurantUrl);
                 const restaurants = await restaurantResponse.json();
         
@@ -138,26 +126,22 @@
                     if (!existing) {
                         favourites.push({ name, address, rating });
                         localStorage.setItem('favourites', JSON.stringify(favourites));
-                        console.log('Favoriten gespeichert:', favourites);
                         alert(`${name} wurde zu deinen Favoriten hinzugefügt!`);
                     } else {
                         alert(`${name} ist bereits in deinen Favoriten.`);
                     }
-
-                    console.log('Local Storage nach dem Speichern:', localStorage.getItem('favourites'));
                 }
             });
 
             const button = document.querySelector('.menuButton'); 
-            const a = document.querySelector('.headerLinks')
-            const hidden_menu = document.querySelector(".hidden-menu")
+            const a = document.querySelector('.headerLinks');
+            const hidden_menu = document.querySelector(".hidden-menu");
 
             button.addEventListener('click', () => {
-            a.classList.toggle('activated')
-            hidden_menu.classList.toggle('show') 
-            button.classList.toggle('activated');
+                a.classList.toggle('activated');
+                hidden_menu.classList.toggle('show'); 
+                button.classList.toggle('activated');
             });
-
         </script>        
     </div>
 </body>

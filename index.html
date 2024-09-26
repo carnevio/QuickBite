@@ -9,18 +9,20 @@
   <body>
     <div class="container">
       <div class="header">
-        <div class="red-bar"></div>
-        <img
-          src="images/LogoQuickBite1.png"
-          alt="Logo of the company"
-          width="100"
-        />
-        <h1>QuickBite</h1>
-        <div class="topright">
-          <button>Cart</button>
-          <button>Menu</button>
-        </div>
-      </div>
+        <header>
+          <div class="logoText">
+              <img class="headerLogo" src="./images/LogoQuickBite1.png" alt="Logo">
+              <h1 class="HeaderTitel">QuickBite</h1>
+          </div>
+          
+          <a class="headerLinks" href="favourites.html">Favoriten</a>
+          <button class="menuButton" onclick="toggleMenu()">☰</button>
+          <div class="hidden-menu">
+              <h1 class="menuTitle">QuickBite</h1>
+              <a class="menuLinks" href="index.html">Home</a>
+          
+          </div>
+      </header>
       <div class="main">
         <h2>Dein Lieblingsessen, wann und wo du willst!</h2>
         <div class="eingabe">
@@ -90,6 +92,16 @@
             console.error("Fehler beim Abrufen der Geodaten:", error);
           }
         });
+
+        const button = document.querySelector('.menuButton'); 
+            const a = document.querySelector('.headerLinks')
+            const hidden_menu = document.querySelector(".hidden-menu")
+
+            button.addEventListener('click', () => {
+            a.classList.toggle('activated')
+            hidden_menu.classList.toggle('show') 
+            button.classList.toggle('activated');
+            });
     </script>
    
   </body>

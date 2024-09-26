@@ -7,7 +7,7 @@
 
 .container div {
 
-    border: 2px solid black;
+
     color: #fff;
     padding: 5px;
     font-family: Arial;
@@ -25,7 +25,7 @@ h1 {
     color: black;
 }
 
-.header {
+header {
     display: flex;
     justify-content: space-between;
 }
@@ -90,11 +90,118 @@ header {
     align-items: center;
     color: rgb(224, 22, 22);
 }
+
+.burgerMenuImg {
+    width: auto;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    padding: 20px;
+}
+
+.menuButton.activated {
+    animation: moveAndRotate 0.45s forwards;
+  }
+
+.menuTitle {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+.hidden-menu {
+    position: fixed;
+    top: 0;
+    right: -245px; 
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    transition: right 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden-menu.show {
+    right: 0;
+    width: 35vw; 
+    background: #fff;
+}
+
+@keyframes moveAndRotate {
+    0% {
+      transform: translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateX(30%);
+    }
+}
+
+@keyframes moveAndRotate2 {
+    0% {
+      transform: translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateX(40%);
+    }
+}
+
+@keyframes popout {
+    0% { transform: translateX(0);}
+    100% { transform: translateX(-220);}
+  }
+
+.menuLinks {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.menuButton {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 5px 15px; 
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.5s;
+    z-index: 10; 
+    margin-right: 10px;
+  }
+
+
+  .headerLinks {
+    text-decoration: none;
+    font-size: 24px;
+    color: black;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.headerLinks.activated {
+    animation: moveAndRotate2 0.45s forwards;
+}
+
 .AboutUs {
     display: flex;
 }
 
-.header {
+.headerLogo {
+    width: 100px;
+}
+
+.logoText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2vw;
+    margin: -2vw;
+
+}
+
+header {
     text-align: center;
     width: 100%;
     height: auto;
@@ -108,6 +215,14 @@ header {
     text-shadow: 1px 1px 1px #333;
     /* Änderung des Farbverlaufs von oben nach unten */
     background-image: linear-gradient(to bottom, #ff0000a6 10%, #c2777704 100%);
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+
+button:hover{
+	cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {

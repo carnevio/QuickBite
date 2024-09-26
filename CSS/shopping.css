@@ -119,6 +119,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-shadow: 1px 1px 1px #333;
 }
 
 footer {

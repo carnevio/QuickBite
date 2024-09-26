@@ -9,8 +9,16 @@
 <body>
     <div class="container">
         <header>
-            <h1>Header</h1>
-            <a href="favourites.html">Favoriten</a>
+            <div class="logoText">
+                <img class="headerLogo" src="./images/LogoQuickBite.jpg" alt="Logo">
+                <h1 class="HeaderTitel">QuickBite</h1>
+            </div>
+            <a class="headerLinks" href="favourites.html">Favoriten</a>
+            <button class="menuButton" onclick="toggleMenu()">☰</button>
+            <div class="hidden-menu">
+                <h1 class="menuTitle">QuickBite</h1>
+                <a class="menuLinks" href="index.html">Home</a>
+            </div>
         </header>
 
         <h1 class="Slogan">Bestelle Essen und mehr</h1>
@@ -26,14 +34,13 @@
 
         <footer>
             <div class="links">
-                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Über uns</a>
+                <a href="aboutUs.html">Über uns</a>
                 <a href="favourites.html">Favoriten</a>
-                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Restaurante</a>
+                <a href="shopping.html">Restaurante</a>
             </div>
             <div class="middle">
-                <p>Hier Könnte ein Text stehen</p>
-                <a href="https://www.youtube.com/watch?v=8ybW48rKBME">Kontakt</a>
-                <a href="https://www.youtube.com/?v=8ybW48rKBME">QuickBite.ch</a>
+                <p>QuickBite GmbH</p>
+                <a href="index.html">Home</a>
             </div>
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1949.5967268399372!2d8.346173874919447!3d47.071516324776425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ffc03f44a7433%3A0xa693809437ac2778!2sICT-Berufsbildung%20Zentralschweiz!5e1!3m2!1sde!2sch!4v1727256602366!5m2!1sde!2sch" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -41,19 +48,16 @@
         </footer>
 
         <script>
-            // Funktion, um die Adresse aus der URL zu holen
             function getAddressFromUrl() {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get('address');
             }
         
-            // Funktion, um die Adresse in den Seitentitel einzufügen
             function setTitleWithAddress(address) {
                 const titleElement = document.getElementById('page-title');
                 titleElement.textContent = `Restaurants in der Nähe von ${address}`;
             }
         
-            // Funktion, um Restaurants zu holen
             async function getRestaurants(address) {
                 const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
         
@@ -68,7 +72,6 @@
                 const location = geocodeData.results[0].geometry.location;
                 const locationString = `${location.lat},${location.lng}`;
         
-                // API-Anruf für Restaurants
                 const restaurantUrl = `http://localhost:3000/api/restaurants?address=${encodeURIComponent(locationString)}`;
                 const restaurantResponse = await fetch(restaurantUrl);
                 const restaurants = await restaurantResponse.json();
@@ -98,61 +101,62 @@
                 }
             }
         
-            // Funktion, um die Adresse im Input-Feld zu aktualisieren
             function setAddressInputValue(address) {
                 const addressInput = document.getElementById('address-input');
                 addressInput.value = address;
             }
         
-            // Hauptlogik
             const address = getAddressFromUrl();
             if (address) {
-                setTitleWithAddress(address);  // Titel aktualisieren
-                setAddressInputValue(address); // Input-Feld mit Adresse füllen
-                getRestaurants(address);       // Restaurants holen
+                setTitleWithAddress(address);  
+                setAddressInputValue(address); 
+                getRestaurants(address);       
             } else {
                 document.getElementById('restaurant-list').innerHTML = 'Keine Adresse angegeben.';
             }
         
-            // Event-Listener für den Button "Suche aktualisieren"
             document.getElementById('update-address').addEventListener('click', () => {
                 const newAddress = document.getElementById('address-input').value;
         
                 if (newAddress) {
-                    // Leite die Seite mit der neuen Adresse neu weiter
                     window.location.href = `shopping.html?address=${encodeURIComponent(newAddress)}`;
                 }
             });
         
-            // Event-Listener für Favoriten-Button
             document.addEventListener('click', function (e) {
                 if (e.target.closest('.favorite-btn')) {
                     const button = e.target.closest('.favorite-btn');
-                    const name = button.getAttribute('data-name');  // Name statt ID verwenden
+                    const name = button.getAttribute('data-name'); 
                     const address = button.getAttribute('data-address');
                     const rating = button.getAttribute('data-rating');
 
-                    // Favoriten aus dem Local Storage abrufen oder einen leeren Array erstellen
                     let favourites = JSON.parse(localStorage.getItem('favourites')) || [];
 
-                    // Überprüfen, ob das Restaurant bereits in den Favoriten ist (Name verwenden)
                     const existing = favourites.find(item => item.name === name);
 
                     if (!existing) {
-                        // Wenn es nicht existiert, zu den Favoriten hinzufügen
                         favourites.push({ name, address, rating });
                         localStorage.setItem('favourites', JSON.stringify(favourites));
                         console.log('Favoriten gespeichert:', favourites);
                         alert(`${name} wurde zu deinen Favoriten hinzugefügt!`);
                     } else {
-                        // Restaurant bereits in Favoriten
                         alert(`${name} ist bereits in deinen Favoriten.`);
                     }
 
-                    // Debugging: Favoriten anzeigen
                     console.log('Local Storage nach dem Speichern:', localStorage.getItem('favourites'));
                 }
             });
+
+            const button = document.querySelector('.menuButton'); 
+            const a = document.querySelector('.headerLinks')
+            const hidden_menu = document.querySelector(".hidden-menu")
+
+            button.addEventListener('click', () => {
+            a.classList.toggle('activated')
+            hidden_menu.classList.toggle('show') 
+            button.classList.toggle('activated');
+            });
+
         </script>        
     </div>
 </body>

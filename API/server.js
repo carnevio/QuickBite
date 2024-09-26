@@ -3,9 +3,15 @@ import fetch from 'node-fetch';
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://041er-blj.ch', // Erlaubt Anfragen von allen Ursprüngen (für Entwicklungszwecke)
+    methods: 'GET', // Erlaubt nur GET-Anfragen
+    allowedHeaders: ['Content-Type'], // Erlaubte Header
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const apiKey = 'AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0';

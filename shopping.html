@@ -60,7 +60,7 @@
             }
         
             async function getRestaurants(address) {
-                const restaurantUrl = `http://localhost:3000/api/restaurants?address=${encodeURIComponent(address)}`; // Sicherstellen, dass der Port hier stimmt
+                const restaurantUrl = `https://quickbite-mtwy.onrender.com/api/restaurants?address=${encodeURIComponent(address)}`; // Sicherstellen, dass der Port hier stimmt
 
                 const restaurantResponse = await fetch(restaurantUrl);
                 const restaurants = await restaurantResponse.json();

@@ -36,7 +36,7 @@
     right: -245px; 
     width: 250px;
     height: 100vh;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     padding: 20px;
     transition: right 0.5s ease;
     overflow: hidden;
@@ -47,7 +47,8 @@
 
 .hidden-menu.show {
     right: 0;
-    width: 35vw; 
+    width: 25vw; 
+    background-color: white;
 }
 
 @keyframes moveAndRotate {
@@ -55,22 +56,14 @@
       transform: translateX(0) rotate(0deg);
     }
     100% {
-      transform: translateX(30%);
+      transform: translateX(-18vw);
     }
 }
 
-@keyframes moveAndRotate2 {
-    0% {
-      transform: translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateX(40%);
-    }
-}
 
 @keyframes popout {
     0% { transform: translateX(0);}
-    100% { transform: translateX(-220);}
+    100% { transform: translateX(-20vw);}
   }
 
 .menuLinks {
@@ -100,6 +93,7 @@
 .headerLogo {
     width: 90px;
     padding: 20px;
+    margin-bottom: 10px;
 }
 
 .headerLinks {
@@ -111,7 +105,7 @@
 }
 
 .headerLinks.activated {
-    animation: moveAndRotate2 0.45s forwards;
+    animation: moveAndRotate 0.45s forwards;
 }
 
 header {
@@ -119,7 +113,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-shadow: 1px 1px 1px #333;
+    margin-top:-10px;
+    margin-left:-10px;
+    margin-right:-10px;
 }
 
 footer {
@@ -160,10 +156,11 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 55vw;
 }
 
 .map {
-    width: 50%;
+    width: 200%;
 }
 
 iframe {
@@ -194,6 +191,22 @@ iframe {
     height: 24px;
 }
 
+.Slogan {
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+    .menuTitle {
+        font-size: 17px;
+    }
+}
 
 @media screen and (max-width: 600px) {
     .map{
@@ -206,7 +219,7 @@ iframe {
         display: none;
     }
     .menuTitle {
-        font-size: 20px;
+        font-size: 17px;
     }
 }
 

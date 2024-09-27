@@ -333,10 +333,12 @@ footer {
         font-size: 17px;
     }
 
-    .header {
+    header {
         display: flex;
         justify-content: space-between;
     }
+
+
 }
 
 @media screen and (max-width: 400px) {

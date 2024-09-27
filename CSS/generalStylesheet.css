@@ -123,3 +123,24 @@ footer {
 body {
     font-family: Arial, sans-serif;
 }
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-content: stretch;
+    margin-top: 15px;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 250px;
+}
+
+.map {
+    margin-left: 50px;
+    width: 50%;
+    margin-right: none;
+}

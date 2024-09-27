@@ -76,7 +76,6 @@
         .addEventListener("click", async () => {
           const address = document.getElementById("address").value;
 
-          // Geocode the address to get coordinates
           const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
             address
           )}&key=AIzaSyBUxmQoaWaQuXMoXx95qOy5cxFq-7UxPu0`;
@@ -85,17 +84,14 @@
             const geocodeResponse = await fetch(geocodeUrl);
             const geocodeData = await geocodeResponse.json();
 
-            // Überprüfen, ob die Geokodierung erfolgreich war
             if (geocodeData.status !== "OK") {
               alert("Ungültige Adresse oder Standort");
               return;
             }
 
-            // Koordinaten extrahieren
             const location = geocodeData.results[0].geometry.location;
             const locationString = `${location.lat},${location.lng}`;
 
-            // Leite den Benutzer zur shopping.html mit der Adresse weiter
             const url = `shopping.html?address=${encodeURIComponent(address)}`;
             window.location.href = url;
           } catch (error) {

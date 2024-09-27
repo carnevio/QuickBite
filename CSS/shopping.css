@@ -6,11 +6,6 @@
     max-height:  1200px;
 }
 
-.container div {
-    padding: 5px;
-    font-family: Arial;
-    font-weight: bold;
-}
 
 .burgerMenuImg {
     width: auto;
@@ -192,14 +187,30 @@ iframe {
 }
 
 .Slogan {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.address-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    padding: 5px;
+    font-family: Arial;
+    font-size: 50px;
+}
 
+#address-input {
+    width: 100px;
+    height: auto;
+}
 
-
-
+#page-title {
+    display: flex;
+    justify-content: center;
+}
 
 
 @media screen and (max-width: 1000px) {

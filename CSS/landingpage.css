@@ -313,7 +313,37 @@ footer {
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
+    .menuTitle {
+        font-size: 17px;
+    }
+}
 
-    
+@media screen and (max-width: 600px) {
+    .map{
+        display: none;
+    }
+    .headerLinks {
+        display: none;
+    }
+    .HeaderTitel {
+        display: none;
+    }
+    .menuTitle {
+        font-size: 17px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .map{
+        display: none;
+    }
+    .headerLinks {
+        display: none;
+    }
 }

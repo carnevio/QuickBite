@@ -6,11 +6,6 @@
     max-height:  1200px;
 }
 
-.container div {
-    padding: 5px;
-    font-family: Arial;
-    font-weight: bold;
-}
 
 .burgerMenuImg {
     width: auto;
@@ -70,6 +65,7 @@
     text-decoration: none;
     color: black;
     font-size: 20px;
+    margin-bottom: 15px;
 }
 
 .menuButton {
@@ -109,13 +105,15 @@
 }
 
 header {
-    background-color: rgba(255, 0, 0, 0.336);
+    background-color: rgb(238, 69, 69);
+    box-shadow: 15px 0px 15px 7px rgba(169, 169, 169, 0.404);
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top:-10px;
     margin-left:-10px;
     margin-right:-10px;
+    color: rgb(255, 255, 255);
 }
 
 footer {
@@ -192,14 +190,30 @@ iframe {
 }
 
 .Slogan {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.address-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    padding: 5px;
+    font-family: Arial;
+    font-size: 50px;
+}
 
+#address-input {
+    width: 100px;
+    height: auto;
+}
 
-
-
+#page-title {
+    display: flex;
+    justify-content: center;
+}
 
 
 @media screen and (max-width: 1000px) {

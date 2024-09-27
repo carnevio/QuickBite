@@ -18,6 +18,9 @@
             <div class="hidden-menu">
                 <h1 class="menuTitle">QuickBite</h1>
                 <a class="menuLinks" href="index.html">Home</a>
+                <a class="menuLinks" href="shopping.html">Restaurants</a>
+                <a class="menuLinks" href="favourites.html">Favoriten</a>
+                <a class="menuLinks" href="aboutUs.html">About Us</a>
             </div>
         </header>
         <div class="Slogan">
@@ -60,7 +63,7 @@
             }
         
             async function getRestaurants(address) {
-                const restaurantUrl = `https://quickbite-mtwy.onrender.com/api/restaurants?address=${encodeURIComponent(address)}`; // Sicherstellen, dass der Port hier stimmt
+                const restaurantUrl = `https://quickbite-mtwy.onrender.com/api/restaurants?address=${encodeURIComponent(address)}`;
 
                 const restaurantResponse = await fetch(restaurantUrl);
                 const restaurants = await restaurantResponse.json();

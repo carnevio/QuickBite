@@ -4,8 +4,14 @@
     grid-template-rows:   80px auto 120px;
   
     max-height:  1200px;
+
+    min-height: 100vh;
 }
 
+footer {
+    display: flex;
+    justify-content: space-between;
+}
 
 .burgerMenuImg {
     width: auto;
@@ -21,8 +27,10 @@
 
 .menuTitle {
     margin-top: 30px;
+    margin-left: 25px;
     margin-bottom: 40px;
     font-size: 30px;
+    color: black;
 }
 
 .hidden-menu {
@@ -86,6 +94,10 @@
     align-items: center;
 }
 
+#menuTitle {
+    color: black;
+}
+
 .headerLogo {
     width: 90px;
     padding: 20px;
@@ -95,7 +107,7 @@
 .headerLinks {
     text-decoration: none;
     font-size: 24px;
-    color: black;
+    color: white;
     margin-left: auto;
     margin-right: 30px;
 }
@@ -117,7 +129,8 @@ header {
 }
 
 footer {
-    background-color: green;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 15px 0px 15px 7px rgba(169, 169, 169, 0.404);
 }
 
 body {
@@ -128,19 +141,105 @@ body {
     display: flex;
     flex-direction: column;
     align-content: flex-end;
-    align-content: stretch;
-    margin-top: 15px;
+    padding: 20px;
+    justify-content: center;
 }
 
 .middle {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-left: 250px;
+    align-items: left;
+    padding: 20px;
+}
+
+.iframe {
+    width:300px;
+    height:300px;
+    border: none;
 }
 
 .map {
-    margin-left: 50px;
-    width: 50%;
-    margin-right: none;
+    display: flex;
+    margin-right: 20px;
+    justify-content: flex-end;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.links a, .middle a {
+    color: inherit; 
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.links a::after, .middle a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #000000; 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.links a:hover::after, .middle a:hover::after {
+    transform: scaleX(1); 
+}
+
+.links a:hover, .middle a:hover {
+    color: #000000; 
+}
+
+.footerSlogan {
+    font-size: 40px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 150px;
+}
+
+@media screen and (max-width: 1000px) {
+    .map{
+        display: none;
+    }
+    .menuTitle {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .map{
+        display: none;
+    }
+    .headerLinks {
+        display: none;
+    }
+    .HeaderTitel {
+        display: none;
+    }
+    .menuTitle {
+        font-size: 17px;
+        margin-left: 10px;
+    }
+    .logoText {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .map{
+        display: none;
+    }
+    .headerLinks {
+        display: none;
+    }
 }

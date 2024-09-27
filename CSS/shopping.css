@@ -14,34 +14,6 @@
     color: black;
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-}
-
-.links {
-    display: flex;
-    flex-direction: column;
-    align-content: stretch;
-}
-
-.middle {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 55vw;
-}
-
-.map {
-    width: 200%;
-}
-
-iframe {
-    width: 50%;
-    height: 100%;
-    border: none;
-}
-
 .restaurant a {
     color: blue;
     text-decoration: underline;
@@ -149,40 +121,14 @@ iframe {
 
 
 @media screen and (max-width: 1000px) {
-    .menuTitle {
-        font-size: 17px;
-    }
     #address-input {
         width: 45vw;
         max-width: 250px;
     }
-    
-    
 }
 
 @media screen and (max-width: 600px) {
-    .map{
-        display: none;
-    }
-    .headerLinks {
-        display: none;
-    }
-    .HeaderTitel {
-        display: none;
-    }
-    .menuTitle {
-        font-size: 17px;
-    }
     #addressLabel {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .map{
-        display: none;
-    }
-    .headerLinks {
         display: none;
     }
 }

@@ -29,7 +29,7 @@ body {
 
 h1 {
     text-align: center;
-    color: black;
+    color: white;
 }
 
 header {
@@ -118,6 +118,7 @@ header {
     margin-top: 30px;
     margin-bottom: 40px;
     font-size: 30px;
+    color: black;
 }
 
 .hidden-menu {
@@ -178,7 +179,7 @@ header {
   .headerLinks {
     text-decoration: none;
     font-size: 24px;
-    color: black;
+    color: white;
     margin-left: auto;
     margin-right: 30px;
 
@@ -214,7 +215,6 @@ header {
     overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
     padding: 50px;
-    color: #c90606;
     text-shadow: 1px 1px 1px #333;
     background-image: linear-gradient(to bottom, #ff0000a6 10%, #c2777704 100%);
     margin-top: -5px;
@@ -315,6 +315,7 @@ footer {
 @media screen and (max-width: 1000px) {
     .menuTitle {
         font-size: 17px;
+        color: black;
     }
 }
 
@@ -330,6 +331,7 @@ footer {
     }
     .menuTitle {
         font-size: 17px;
+        color: black;
     }
 
     header {

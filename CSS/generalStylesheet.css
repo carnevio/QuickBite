@@ -5,12 +5,14 @@
   
     max-height:  1200px;
 
-    min-height: 74vh;
+    min-height: 100vh;
 }
 
 footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    min-height: 250px;
 }
 
 .burgerMenuImg {
@@ -226,12 +228,10 @@ body {
     .HeaderTitel {
         display: none;
     }
+
     .menuTitle {
         font-size: 17px;
         margin-left: 10px;
-    }
-    .logoText {
-        display: none;
     }
 }
 
@@ -240,6 +240,9 @@ body {
         display: none;
     }
     .headerLinks {
+        display: none;
+    }
+    .HeaderTitel {
         display: none;
     }
 }
